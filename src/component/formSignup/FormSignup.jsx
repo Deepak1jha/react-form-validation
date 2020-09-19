@@ -2,11 +2,11 @@ import React from "react";
 import useForm from "../../hooks/useForm/useForm";
 
 export default function FormSignup() {
-  const {handleChange, values} = useForm();
+  const {handleChange, values, handleSubmit} = useForm();
 
   return (
     <div className="form-content-right">
-      <form className="form">
+      <form className="form" onSubmit={handleSubmit}>
         <h1>Get Started with us today !
           Create your account by filling information below</h1>
         <div className="form-inputs">
