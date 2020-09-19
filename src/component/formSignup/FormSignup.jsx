@@ -1,8 +1,10 @@
 import React from "react";
 import useForm from "../../hooks/useForm/useForm";
+import Validate from "../../validation/ValidateInfo";
+import "../form/Form.css";
 
-export default function FormSignup() {
-  const {handleChange, values, handleSubmit} = useForm();
+export default function FormSignup({submitForm}) {
+  const {handleChange, values, handleSubmit, errors} = useForm(submitForm, Validate);
 
   return (
     <div className="form-content-right">
@@ -22,6 +24,7 @@ export default function FormSignup() {
             placeholder="enter your username"
             value={values.username}
             onChange={handleChange}/>
+          {errors.username && <p>{errors.username}</p>}
         </div>
         <div className="form-inputs">
           <label htmlFor="email"
@@ -36,6 +39,7 @@ export default function FormSignup() {
             placeholder="enter your email"
             value={values.email}
             onChange={handleChange}/>
+          {errors.email && <p> {errors.email} </p>}
         </div>
         <div className="form-inputs">
           <label htmlFor="password"
@@ -50,6 +54,7 @@ export default function FormSignup() {
             placeholder="enter your password"
             value={values.password}
             onChange={handleChange}/>
+          {errors.password && <p> {errors.password}</p>}
         </div>
         <div className="form-inputs">
           <label htmlFor="password"
@@ -64,6 +69,7 @@ export default function FormSignup() {
             placeholder="enter your Confirm password"
             value={values.confirmPassword}
             onChange={handleChange}/>
+          {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
         </div>
         <button className="form-input-btn"
                 type={"submit"}>Sign Up
